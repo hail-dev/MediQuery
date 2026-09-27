@@ -31,12 +31,12 @@
 
 ```
 ┌──────────────┐     ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│  PDF Upload  │────▶│ Parse + Chunk│────▶│   Embedding  │────▶│  pgvector   │
+│  PDF Upload  │───▶│ Parse + Chunk│───▶│   Embedding  │───▶│  pgvector   │
 │  (FastAPI)   │     │  (PyMuPDF)  │     │  (OpenAI)    │     │  (AWS RDS)  │
 └──────────────┘     └─────────────┘     └──────────────┘     └─────────────┘
-                                                                       │
+                                                                     │
 ┌──────────────┐     ┌─────────────┐     ┌──────────────┐            │
-│   Answer +   │◀────│  LLM Chain  │◀────│  Retriever   │◀───────────┘
+│   Answer +   │◀───│  LLM Chain   │◀───│  Retriever  │◀───────────┘
 │  Citations   │     │(GPT-4o-mini)│     │  (Top-K)     │
 └──────────────┘     └─────────────┘     └──────────────┘
 ```
@@ -289,7 +289,7 @@ pytest tests/ -v
 
 ```
               ┌─────────────┐
-  User ──────▶│  EC2 Instance│
+  User ─────▶│  EC2 Instance│
               │  (Docker)    │
               │  FastAPI     │
               │  Streamlit   │
